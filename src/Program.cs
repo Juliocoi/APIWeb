@@ -20,4 +20,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapMethods(CityPost.Template, CityPost.Methods, CityPost.Handle);
+app.MapMethods(CityGetAll.Template, CityGetAll.Methods, CityGetAll.Handle);
+app.MapMethods(CityGetByName.Template, CityGetByName.Methods, CityGetByName.Handle);
+app.MapMethods(CityGetByState.Template, CityGetByState.Methods, CityGetByState.Handle);
+app.MapMethods(CityPut.Template, CityPut.Methods, CityPut.Handle);
+app.MapMethods(CityDelete.Template, CityDelete.Methods, CityDelete.Handle);
+
 app.Run();

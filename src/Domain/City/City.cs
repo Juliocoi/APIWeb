@@ -8,8 +8,14 @@ public class City
 
     public City(string name, string state)
     {
-        Id = Guid.NewGuid();
-        Name = name;
-        State = state;
+        this.Id = Guid.NewGuid();
+        this.Name = name;
+        this.State = state;
+    }
+
+    public void UpdateCity(string name, string state)
+    {
+        this.Name = name;
+        this.State = state;
     }
 }
