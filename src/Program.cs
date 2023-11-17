@@ -1,4 +1,5 @@
 using APIWeb.EndPoints.Cities;
+using APIWeb.EndPoints.Clients;
 using APIWeb.Infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,4 +27,10 @@ app.MapMethods(CityGetByState.Template, CityGetByState.Methods, CityGetByState.H
 app.MapMethods(CityPut.Template, CityPut.Methods, CityPut.Handle);
 app.MapMethods(CityDelete.Template, CityDelete.Methods, CityDelete.Handle);
 
+app.MapMethods(ClientPost.Template, ClientPost.Methods, ClientPost.Handle);
+app.MapMethods(ClientGetAll.Template, ClientGetAll.Methods, ClientGetAll.Handle);
+app.MapMethods(ClientGetById.Template, ClientGetById.Methods, ClientGetById.Handle);
+app.MapMethods(ClientGetByName.Template, ClientGetByName.Methods, ClientGetByName.Handle);
+app.MapMethods(ClientUpdate.Template, ClientUpdate.Methods, ClientUpdate.Handle);
+app.MapMethods(ClientDelete.Template, ClientDelete.Methods, ClientDelete.Handle);
 app.Run();

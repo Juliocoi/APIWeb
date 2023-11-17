@@ -40,7 +40,7 @@ namespace APIWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("APIWeb.Domain.Client.Client", b =>
@@ -72,7 +72,7 @@ namespace APIWeb.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 
             modelBuilder.Entity("APIWeb.Domain.Client.Client", b =>
