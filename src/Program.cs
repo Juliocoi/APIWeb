@@ -9,6 +9,16 @@ builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["Conne
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "corsPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +41,8 @@ app.MapMethods(ClientPost.Template, ClientPost.Methods, ClientPost.Handle);
 app.MapMethods(ClientGetAll.Template, ClientGetAll.Methods, ClientGetAll.Handle);
 app.MapMethods(ClientGetById.Template, ClientGetById.Methods, ClientGetById.Handle);
 app.MapMethods(ClientGetByName.Template, ClientGetByName.Methods, ClientGetByName.Handle);
-app.MapMethods(ClientUpdate.Template, ClientUpdate.Methods, ClientUpdate.Handle);
+app.MapMethods(ClientPut.Template, ClientPut.Methods, ClientPut.Handle);
 app.MapMethods(ClientDelete.Template, ClientDelete.Methods, ClientDelete.Handle);
+
+app.UseCors("corsPolicy");
 app.Run();

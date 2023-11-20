@@ -21,11 +21,11 @@ public class Client
         this.Name = name;
         this.Sexo = sexo;
         this.Birthday = birthday;
-        this.Idade = idade;
+        this.Idade = idade; 
         this.City = city;
     }
 
-    public void clientUpdate(string name, string sexo, DateTime birthdaty, int idade, Guid cityId)
+    public void ClientUpdate(string name, string sexo, DateTime birthdaty, int idade, Guid cityId)
     {
         this.Name = name;
         this.Sexo = sexo;

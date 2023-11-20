@@ -5,18 +5,18 @@ namespace APIWeb.EndPoints.Cities;
 
 public class CityGetByState
 {
-    public static string Template => "/citiesbystate";
+    public static string Template => "/cities-by-state";
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action([FromQuery] string name, [FromQuery]string state, ApplicationDbContext context)
+    public static IResult Action([FromQuery]string state, ApplicationDbContext context)
     {
-        var city = context.Cities.FirstOrDefault(c => c.State == state && c.Name == name);
+        var cities = context.Cities.Where(c => c.State.Contains(state));
 
-        if (city == null)
+        if (!cities.Any())
             return Results.NotFound();
 
-        var response = new CityResponse(city.Id, city.Name, city.State);
+        var response = cities.Select(c => new CityResponse(c.Id, c.Name, c.State));
 
         return Results.Ok(response);
     }

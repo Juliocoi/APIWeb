@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APIWeb.EndPoints.Clients;
 
-public class ClientUpdate
+public class ClientPut
 {
     public static string Template => "/clients/{id:guid}";
     public static string[] Methods => new string[] { HttpMethod.Put.ToString() };
@@ -18,7 +18,7 @@ public class ClientUpdate
             return Results.NotFound();
         }
 
-        client.clientUpdate(clientRequest.Name, clientRequest.Sexo, clientRequest.Birthday,
+        client.ClientUpdate(clientRequest.Name, clientRequest.Sexo, clientRequest.Birthday,
             clientRequest.Idade, clientRequest.CityId);
 
         context.SaveChanges();

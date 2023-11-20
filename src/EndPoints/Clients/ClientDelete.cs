@@ -13,21 +13,14 @@ public class ClientDelete
     {
         var client = context.Clients.Find(id);
 
-        context.ChangeTracker.DetectChanges();
-        Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-
         if (client == null)
         {
             return Results.NotFound();
         }
 
         context.Remove(client);
-
-        context.ChangeTracker.DetectChanges();
-        Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-
         context.SaveChanges();
 
-        return Results.Ok(client);
+        return Results.Ok();
     }
 }
