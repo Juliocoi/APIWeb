@@ -13,10 +13,10 @@ public class CityPut
     {
         var city = context.Cities.Find(id);
 
-        if (city == null)
-            return Results.BadRequest();
+        city.CityUpdate(cityRequest.Name, cityRequest.State);
 
-        city.UpdateCity(cityRequest.Name, cityRequest.State);
+        if (!city.IsValid)
+            return Results.ValidationProblem(city.Notifications.ConvertToPromblemDetails());
 
         context.SaveChanges();
 

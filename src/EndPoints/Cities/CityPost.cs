@@ -1,6 +1,5 @@
 ﻿using APIWeb.Domain.City;
 using APIWeb.Infra.Data;
-using Microsoft.IdentityModel.Tokens;
 
 namespace APIWeb.EndPoints.Cities;
 
@@ -14,10 +13,12 @@ public class CityPost
     {
         var city = new City(cityRequest.Name, cityRequest.State);
 
-        if (city.Name.IsNullOrEmpty() || city.State.IsNullOrEmpty())
+        if (!city.IsValid)
         {
-            return Results.BadRequest();
+            return Results.ValidationProblem(city.Notifications.ConvertToPromblemDetails());
         }
+            
+        
 
         context.Cities.Add(city);
         context.SaveChanges();

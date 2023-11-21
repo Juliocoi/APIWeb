@@ -1,5 +1,6 @@
 ﻿using APIWeb.Domain.City;
 using APIWeb.Domain.Client;
+using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIWeb.Infra.Data;
@@ -14,6 +15,8 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        builder.Ignore<Notification>();
 
         builder.Entity<City>()
             .Property(c => c.Name).IsRequired().HasMaxLength(50);

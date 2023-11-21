@@ -13,13 +13,11 @@ public class ClientPut
     {
         var client = context.Clients.Find(Id);
 
-        if(client == null)
-        {
-            return Results.NotFound();
-        }
-
         client.ClientUpdate(clientRequest.Name, clientRequest.Sexo, clientRequest.Birthday,
             clientRequest.Idade, clientRequest.CityId);
+
+        if (!client.IsValid)
+            return Results.ValidationProblem(client.Notifications.ConvertToPromblemDetails());
 
         context.SaveChanges();
 

@@ -16,6 +16,9 @@ public class ClientPost
         var client = new Client(clientRequest.Name, clientRequest.Sexo, 
             clientRequest.Birthday, clientRequest.Idade, city);
 
+        if (!client.IsValid)
+            return Results.ValidationProblem(client.Notifications.ConvertToPromblemDetails());
+
         context.Clients.Add(client);
         context.SaveChanges();
 

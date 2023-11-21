@@ -1,6 +1,8 @@
 using APIWeb.EndPoints.Cities;
 using APIWeb.EndPoints.Clients;
 using APIWeb.Infra.Data;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 // ########## Configuração banco de dados
@@ -43,6 +45,22 @@ app.MapMethods(ClientGetById.Template, ClientGetById.Methods, ClientGetById.Hand
 app.MapMethods(ClientGetByName.Template, ClientGetByName.Methods, ClientGetByName.Handle);
 app.MapMethods(ClientPut.Template, ClientPut.Methods, ClientPut.Handle);
 app.MapMethods(ClientDelete.Template, ClientDelete.Methods, ClientDelete.Handle);
+
+app.UseExceptionHandler("/error");
+app.Map("/error", (HttpContext http) =>
+{
+    var error = http.Features?.Get<IExceptionHandlerFeature>()?.Error;
+
+    if(error != null)
+    {
+        if (error is SqlException)
+            return Results.Problem(title: "Database out", statusCode: 500);
+        else if (error is BadHttpRequestException)
+            return Results.Problem(title: "Error to convert data", statusCode: 500);
+    }
+
+    return Results.Problem(title: "An error Occured", statusCode: 500);
+});
 
 app.UseCors("corsPolicy");
 app.Run();
