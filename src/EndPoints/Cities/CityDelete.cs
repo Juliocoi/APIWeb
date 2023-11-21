@@ -19,6 +19,6 @@ public class CityDelete
         context.Remove(city);
         context.SaveChanges();
 
-        return Results.Ok($"A cidade de {city.Name} foi deletada com sucesso");
+        return Results.Ok();
     }
 }

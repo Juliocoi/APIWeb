@@ -14,10 +14,8 @@ public class ClientDelete
         var client = context.Clients.Find(id);
 
         if (client == null)
-        {
             return Results.NotFound();
-        }
-
+        
         context.Remove(client);
         context.SaveChanges();
 

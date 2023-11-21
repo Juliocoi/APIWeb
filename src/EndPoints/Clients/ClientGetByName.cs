@@ -12,16 +12,14 @@ public class ClientGetByName
 
     public static IResult Action([FromQuery] string name, ApplicationDbContext context)
     {
-        var query = context.Clients.Include(c => c.City).Where(c => c.Name == name);
-
-        var client = query.FirstOrDefault();
+        var client = context.Clients.Include(c => c.City).Where(c => c.Name == name);
 
         if (client == null)
             return Results.NotFound();
 
-        var response = new ClientResponse(client.Id, client.Name, client.Sexo,
-            client.Birthday, client.Idade, client.City.Name, client.City.State);
-
+        var response = client.Select(c => new ClientResponse(c.Id, c.Name, c.Sexo,
+            c.Birthday, c.Idade, c.Name, c.City.State));
+        
         return Results.Ok(response);
     }
 }
