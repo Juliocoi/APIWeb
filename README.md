@@ -2,23 +2,28 @@
 
 ## Sumário
 
-1. [Configurações](#Config)
-2. [Configure o banco de dados](#Configure-o-banco-de-dados)
-3. [Criando banco de dados para o projeto](#Criando-um-banco-de-dados-para-o-projeto)
-4. [Rodando o projeto](#Rodando-o-projeto)
-5. [Criando uma Cidade](#Criando-uma-cidade)
-6. [Listar todas as cidades](#Listar-todas-as-cidades)
-7. [Pesquisar por nome da cidade](#Pesquisar-por-nome-da-cidade)
-8. [Pesquisa pelo nome do Estado](#Pesquisa-pelo-nome-do-Estado)
-9. [Atualizar Cidade](#Atualizar-Cidade)
-10. [Deletar Cidade](#Deletar-Cidade)
-11. [Criando um Cliente](#Criando-um-Cliente)
-12. [Listar todos os clientes](#Listar-todos-os-clientes)
-13. [Pesquisar cliente pelo ID](#Pesquisar-cliente-pelo-ID)
-14. [Pesquisar cliente pelo Nome](#Pesquisar-cliente-pelo-Nome)
-15. [Atualizar Cliente](#Atualizar-Cliente)
-16. [Deletar Cliente](#Deletar-Cliente)
-17. [Error](#Error)
+1. [Sobre o projeto](#Sobre-o-projeto)
+2. [Configurações](#Config)
+3. [Configure o banco de dados](#Configure-o-banco-de-dados)
+4. [Criando banco de dados para o projeto](#Criando-um-banco-de-dados-para-o-projeto)
+5. [Rodando o projeto](#Rodando-o-projeto)
+6. [Criando uma Cidade](#Criando-uma-cidade)
+7. [Listar todas as cidades](#Listar-todas-as-cidades)
+8. [Pesquisar por nome da cidade](#Pesquisar-por-nome-da-cidade)
+9. [Pesquisa pelo nome do Estado](#Pesquisa-pelo-nome-do-Estado)
+10. [Atualizar Cidade](#Atualizar-Cidade)
+11. [Deletar Cidade](#Deletar-Cidade)
+12. [Criando um Cliente](#Criando-um-Cliente)
+13. [Listar todos os clientes](#Listar-todos-os-clientes)
+14. [Pesquisar cliente pelo ID](#Pesquisar-cliente-pelo-ID)
+15. [Pesquisar cliente pelo Nome](#Pesquisar-cliente-pelo-Nome)
+16. [Atualizar Cliente](#Atualizar-Cliente)
+17. [Deletar Cliente](#Deletar-Cliente)
+18. [Error](#Error)
+
+## Sobre o projeto
+
+O projeto é uma API utilizada para cadastrar, consultar, editar e deltar as entidades Cidade e Clientes.
 
 ## Config
 
