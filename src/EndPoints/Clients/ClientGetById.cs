@@ -14,7 +14,7 @@ public class ClientGetById
     {
         var client = context.Clients.Include(c => c.City).Where(c => c.Id == id);
 
-        if (client == null)
+        if (!client.Any())
         {
             return Results.NotFound();
         }

@@ -14,12 +14,12 @@ public class ClientGetByName
     {
         var client = context.Clients.Include(c => c.City).Where(c => c.Name == name);
 
-        if (client == null)
+        if (!client.Any())
             return Results.NotFound();
-
+        
         var response = client.Select(c => new ClientResponse(c.Id, c.Name, c.Sexo,
             c.Birthday, c.Idade, c.Name, c.City.State));
-        
+
         return Results.Ok(response);
     }
 }
